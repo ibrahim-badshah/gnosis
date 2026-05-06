@@ -1283,22 +1283,272 @@ code,pre{font-family:var(--font-mono);font-size:0.88rem}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px}
 ::-webkit-scrollbar-thumb:hover{background:var(--text-muted)}
 
-/* Mobile responsive */
+/* ============================================
+   Mobile Responsive — Tablet (≤768px)
+   ============================================ */
 @media(max-width:768px){
+  /* -- Sidebar & Layout -- */
   .sidebar{
     transform:translateX(-100%);
     transition:transform var(--transition);
   }
   .sidebar.open{transform:translateX(0)}
   .main-content{margin-left:0}
-  .page-container{padding:1rem}
-  .category-grid{grid-template-columns:repeat(2,1fr)}
+  .page-container{padding:1rem 0.75rem}
+
+  /* -- Typography -- */
+  h1{font-size:1.5rem}
+  h2{font-size:1.3rem}
+  h3{font-size:1.1rem}
+
+  /* -- Category & Term Grids -- */
+  .category-grid{grid-template-columns:repeat(2,1fr);gap:0.6rem}
   .term-grid{grid-template-columns:1fr}
-  .chat-panel{width:calc(100vw - 2rem);right:1rem;bottom:4.5rem}
-  h1{font-size:1.6rem}
-  .quiz-question,.quiz-option{padding-left:1rem}
+
+  /* -- Cards -- */
+  .card{padding:1rem;border-radius:var(--radius)}
+
+  /* -- Code Editor Block (the main fix for cut-off code) -- */
+  .code-editor{
+    margin:0.75rem -0.75rem;
+    border-radius:var(--radius);
+    width:calc(100% + 1.5rem);
+  }
+  .code-editor-titlebar{
+    flex-wrap:wrap;
+    gap:0.4rem;
+    padding:0.5rem 0.6rem;
+  }
+  .code-editor-title{
+    min-width:0;
+    flex:1 1 100%;
+    order:1;
+  }
+  .code-editor-dots{order:0;flex-shrink:0}
+  .code-editor-actions{order:0;margin-left:auto}
+  .code-editor-desc{
+    display:block;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:unset;
+    font-size:0.72rem;
+  }
+  .code-editor-body{
+    max-height:none;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .code-editor-pre{
+    font-size:0.78rem;
+    padding:0.75rem 0.6rem 0.75rem 0.8rem;
+    white-space:pre;
+    overflow-x:auto;
+    word-break:normal;
+    min-width:0;
+  }
+  .code-editor-line-numbers{
+    min-width:34px;
+    padding:0.75rem 0;
+  }
+  .code-line-num{
+    font-size:0.68rem;
+    padding:0 6px;
+  }
+  .code-editor-footer{
+    flex-wrap:wrap;
+    gap:0.4rem;
+    padding:0.35rem 0.6rem;
+  }
+  .code-editor-collapsed{
+    padding:0.7rem 0.8rem;
+    font-size:0.8rem;
+  }
+
+  /* -- Concept Map — scale down for mobile -- */
+  .concept-map-container{
+    height:320px;
+    overflow:visible;
+    margin:0 -0.25rem;
+  }
+  .concept-node-center{
+    max-width:100px;
+    padding:10px 14px;
+    font-size:0.78rem;
+  }
+  .concept-node-label{font-size:0.72rem}
+  .concept-node-related{
+    padding:6px 10px;
+    font-size:0.7rem;
+    max-width:130px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .concept-node-emoji{font-size:0.85rem}
+  .concept-tooltip{
+    width:170px;
+    padding:8px 10px;
+    font-size:0.72rem;
+  }
+  .concept-legend{
+    gap:6px;
+    bottom:6px;
+    left:8px;
+    flex-wrap:wrap;
+  }
+  .concept-legend-item{font-size:0.58rem}
+
+  /* -- Word Detail Page -- */
+  .tabs{
+    flex-wrap:wrap;
+    gap:0;
+  }
+  .tab{
+    padding:0.5rem 0.8rem;
+    font-size:0.82rem;
+    flex:1 1 auto;
+    text-align:center;
+  }
+
+  /* -- Explanation text -- */
+  .card p{
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+    hyphens:auto;
+  }
+
+  /* -- Badges flow -- */
+  .flex.items-center.gap-1{
+    flex-wrap:wrap;
+  }
+
+  /* -- Quiz -- */
+  .quiz-paper{padding:1.2rem 0.8rem}
   .quiz-paper::before{display:none}
+  .quiz-question{padding-left:0;font-size:1.05rem}
+  .quiz-option{padding-left:0.5rem;padding-right:0.5rem;font-size:0.88rem}
+  .quiz-explanation{padding-left:0.8rem;font-size:0.85rem}
+
+  /* -- Chat Panel -- */
+  .chat-panel{
+    width:calc(100vw - 1.5rem);
+    right:0.75rem;
+    bottom:4.5rem;
+    height:420px;
+    max-height:70vh;
+  }
+  .chat-fab{
+    bottom:1rem;
+    right:1rem;
+    width:48px;
+    height:48px;
+    font-size:1.2rem;
+  }
+
+  /* -- Analytics Stats -- */
   .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-card .stat-value{font-size:1.6rem}
+
+  /* -- Achievements -- */
+  .achievement-grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+
+  /* -- Search box full width -- */
+  .search-box{max-width:100%}
+
+  /* -- Alpha sidebar hide (too tight on mobile) -- */
+  .alpha-bar{display:none}
+
+  /* -- WOD card -- */
+  .wod-card{padding:1.2rem}
+  .wod-card h3{font-size:1.2rem}
+
+  /* -- Flashcard -- */
+  .flashcard-container{max-width:100%}
+
+  /* -- Modal -- */
+  .modal{width:95%;padding:1.2rem}
+
+  /* -- Grid utility -- */
+  .grid-2{grid-template-columns:1fr}
+
+  /* -- Bookmark ribbon -- */
+  .bookmark-ribbon{right:8px;width:20px;height:30px}
+
+  /* -- Toast -- */
+  .toast-container{right:0.75rem;top:1rem;left:0.75rem}
+  .toast{font-size:0.82rem}
+
+  /* -- About page feature grid -- */
+  .card + .card{margin-top:0}
+
+  /* -- SRS buttons -- */
+  .srs-buttons{flex-wrap:wrap}
+  .srs-btn{flex:1 1 auto;min-width:60px;text-align:center}
+}
+
+/* ============================================
+   Mobile Responsive — Small Phone (≤480px)
+   ============================================ */
+@media(max-width:480px){
+  .page-container{padding:0.75rem 0.5rem}
+
+  h1{font-size:1.3rem}
+  h2{font-size:1.15rem}
+
+  /* -- Category grid single column on tiny screens -- */
+  .category-grid{grid-template-columns:1fr 1fr;gap:0.5rem}
+  .category-card{min-height:70px;padding:0.8rem 0.5rem}
+  .cat-name{font-size:0.88rem}
+  .cat-count{font-size:0.75rem}
+
+  /* -- Code block even tighter -- */
+  .code-editor{
+    margin:0.5rem -0.5rem;
+    width:calc(100% + 1rem);
+    border-radius:6px;
+  }
+  .code-editor-pre{font-size:0.72rem;line-height:1.55;padding:0.6rem 0.5rem}
+  .code-editor-line-numbers{min-width:28px}
+  .code-line-num{font-size:0.62rem;padding:0 4px}
+  .code-editor-lang-badge{font-size:0.65rem;padding:1px 7px}
+
+  /* -- Concept map smaller -- */
+  .concept-map-container{height:280px}
+  .concept-node-center{
+    max-width:85px;
+    padding:8px 10px;
+    font-size:0.72rem;
+  }
+  .concept-node-label{font-size:0.65rem}
+  .concept-node-related{
+    padding:5px 8px;
+    font-size:0.65rem;
+    max-width:110px;
+  }
+  .concept-legend{display:none}
+
+  /* -- Tabs even more compact -- */
+  .tab{padding:0.4rem 0.6rem;font-size:0.78rem}
+
+  /* -- Chat panel full screen almost -- */
+  .chat-panel{
+    width:calc(100vw - 1rem);
+    right:0.5rem;
+    left:0.5rem;
+    bottom:4rem;
+    max-height:65vh;
+  }
+  .chat-msg{max-width:92%;font-size:0.82rem}
+
+  /* -- Welcome section stack vertically -- */
+  .wod-card{padding:1rem}
+  .wod-card h3{font-size:1.05rem}
+  .wod-card p{font-size:0.85rem}
+
+  /* -- Quiz tighter -- */
+  .quiz-paper{padding:1rem 0.6rem}
+  .quiz-question{font-size:0.95rem}
+  .quiz-option{font-size:0.82rem;gap:0.5rem;padding:0.6rem 0.4rem}
 }
 
 /* ============================================
