@@ -20,6 +20,7 @@ import GlobalBackground from './components/GlobalBackground';
 import { BookOpen, Home as HomeIcon, HelpCircle, BarChart3, Bookmark, Info, LogIn, LogOut, Sun, Moon, Menu, X, User as UserIcon } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
@@ -287,6 +288,7 @@ export default function App() {
               <AchievementProvider>
                 <HashRouter>
                   <AppRoutes />
+                  <SpeedInsights />
                 </HashRouter>
               </AchievementProvider>
             </QuizProvider>
